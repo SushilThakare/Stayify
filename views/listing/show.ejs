@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.title %> | Wonderlust</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container navbar">
+                <a class="brand" href="/listings">
+                    <span class="brand-dot"></span>
+                    Wonderlust
+                </a>
+
+                <div class="search-pill" aria-hidden="true">
+                    <span>Anywhere</span>
+                    <span>Any week</span>
+                    <span>Add guests</span>
+                    <button class="search-action" type="button">&#9906;</button>
+                </div>
+
+                <div class="nav-actions">
+                    <a class="btn btn-secondary" href="/listings">All Listings</a>
+                    <a class="btn btn-primary" href="/listings/new">Create Listing</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <section class="page-intro">
+                    <div>
+                        <h1><%= listing.title %></h1>
+                        <p><%= listing.location %>, <%= listing.country %></p>
+                    </div>
+                    <div class="chips">
+                        <span class="chip active">Guest favorite</span>
+                        <span class="chip">Verified listing</span>
+                    </div>
+                </section>
+
+                <section class="detail-layout">
+                    <div>
+                        <div class="detail-hero">
+                            <% if (listing.image) { %>
+                                <img src="<%= listing.image %>" alt="<%= listing.title %>">
+                            <% } %>
+                        </div>
+
+                        <article class="detail-section">
+                            <h3>About this place</h3>
+                            <p><%= listing.description %></p>
+                        </article>
+
+                        <article class="detail-section">
+                            <h3>Location details</h3>
+                            <div class="chips">
+                                <span class="chip"><%= listing.location %></span>
+                                <span class="chip"><%= listing.country %></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="side-card">
+                        <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %> <span>night</span></p>
+                        <div class="side-actions">
+                            <a class="btn btn-primary" href="/listings/<%= listing._id %>/edit">Edit Listing</a>
+                            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                                <button class="btn btn-danger" type="submit">Delete Listing</button>
+                            </form>
+                            <a class="btn btn-secondary" href="/listings">Back to Listings</a>
+                        </div>
+                    </aside>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <section>
+                    <h4>Support</h4>
+                    <p>Help Centre</p>
+                    <p>Safety information</p>
+                    <p>Cancellation options</p>
+                </section>
+                <section>
+                    <h4>Hosting</h4>
+                    <p>List your home</p>
+                    <p>Host resources</p>
+                    <p>Community forum</p>
+                </section>
+                <section>
+                    <h4>Wonderlust</h4>
+                    <p>About</p>
+                    <p>Careers</p>
+                    <p>Newsroom</p>
+                </section>
+            </div>
+            <div class="container footer-bottom">© 2026 Wonderlust. Designed for modern stays.</div>
+        </footer>
+    </div>
+</body>
+</html>
