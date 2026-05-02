@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const Listing = require('./models/listing');
 const methodOverride = require('method-override'); 
+const Review = require('./models/review');
+const review = require('./models/review');
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/Wonderlust";
 
@@ -28,6 +30,10 @@ app.set('views',path.join(__dirname , "/views"));
 app.use (express.urlencoded({extended : true}));
 app.use(methodOverride('_method')); 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  "/bootstrap",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist"))
+);
 
 //index route
 app.get('/listings', async (req, res) => {
@@ -57,7 +63,7 @@ catch (err) {
 //show route
 app.get('/listings/:id', async (req, res) => {
    let id = req.params.id;
-  const listing = await Listing.findById(id);
+  const listing = await Listing.findById(id).populate('reviews');
   res.render('listing/show.ejs', { listing });
 });
 
@@ -82,6 +88,24 @@ app.delete('/listings/:id', async (req, res) => {
  let deletedlisting =  await Listing.findByIdAndDelete(id);
  console.log("Deleted listing:", deletedlisting);
   res.redirect('/listings');
+});
+
+//route to create a review for a listing
+app.post('/listings/:id/reviews', async (req, res) => {
+  let listing  = await Listing.findById(req.params.id);
+  let newreview = new Review(req.body.review);
+  await newreview.save();
+   listing.reviews.push(newreview);
+   await listing.save();
+   res.redirect(`/listings/${listing._id}`);
+});
+
+//delete review route
+app.delete('/listings/:id/reviews/:reviewId', async (req, res) => {
+  const { id, reviewId } = req.params;
+  await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+  await Review.findByIdAndDelete(reviewId);
+  res.redirect(`/listings/${id}`);
 });
 
 

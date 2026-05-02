@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= listing.title %> | Wonderlust</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <div class="page-shell">
@@ -74,6 +75,70 @@
                             <a class="btn btn-secondary" href="/listings">Back to Listings</a>
                         </div>
                     </aside>
+
+                    <article class="reviews-section"> 
+                        <h3>Leave a Review</h3>
+                        <form method="POST" action="/listings/<%= listing.id %>/reviews" class="review-form needs-validation" novalidate>
+                            <div class="field">
+                                <label for="rating" class="label">Rating:</label>
+                                <select id="rating" name="rating" class="input select-input form-select" required>
+                                    <option value="">Select a rating</option>
+                                    <option value="1">1 - Poor</option>
+                                    <option value="2">2 - Fair</option>
+                                    <option value="3">3 - Good</option>
+                                    <option value="4">4 - Very Good</option>
+                                    <option value="5">5 - Excellent</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a rating.
+                                </div>
+                            </div>
+                            <div class="field full">
+                                <label for="comment" class="label">Comment:</label>
+                                <textarea id="comment" name="comment" class="textarea form-control" placeholder="Share your experience..." minlength="5" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please provide a comment (at least 5 characters).
+                                </div>
+                            </div>
+                            <div class="review-actions">
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </div>
+                        </form>
+                    </article>
+                    <hr>
+                    <article class="reviews-section">
+                        <h3>Reviews</h3>
+                        
+                        <% if (listing.reviews && listing.reviews.length > 0) { %>
+                            <div class="reviews-container">
+                                <% for (let review of listing.reviews) { %>
+                                    <div class="card review-card mb-3">
+                                        <div class="card-body">
+                                            <div class="review-header">
+                                                <div class="review-rating">
+                                                    <% for (let i = 0; i < review.rating; i++) { %>
+                                                        <span class="star filled">★</span>
+                                                    <% } %>
+                                                    <% for (let i = review.rating; i < 5; i++) { %>
+                                                        <span class="star">★</span>
+                                                    <% } %>
+                                                    <span class="rating-text">(<%= review.rating %>/5)</span>
+                                                </div>
+                                                <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                                    <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                                </form>
+                                            </div>
+                                            <p class="card-text review-comment"><%= review.comment %></p>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } else { %>
+                            <div class="alert alert-info" role="alert">
+                                <p>No reviews yet. Be the first to review this listing!</p>
+                            </div>
+                        <% } %>
+                    </article>
                 </section>
             </div>
         </main>
@@ -101,6 +166,9 @@
             </div>
             <div class="container footer-bottom">© 2026 Wonderlust. Designed for modern stays.</div>
         </footer>
+        
     </div>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/script.js"></script>
 </body>
 </html>
