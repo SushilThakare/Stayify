@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Wonderlust</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container navbar">
+                <a class="brand" href="/listings">
+                    <span class="brand-dot"></span>
+                    Wonderlust
+                </a>
+
+                <div class="search-pill" aria-hidden="true">
+                    <span>Where</span>
+                    <span>Any week</span>
+                    <span>Add guests</span>
+                    <button class="search-action" type="button">&#9906;</button>
+                </div>
+
+                <div class="nav-actions">
+                    <a class="btn btn-primary" href="/listings/new">Create Listing</a>
+                    <% if (!currUser) { %>
+                        <a class="btn btn-secondary" href="/signup">Sign Up</a>
+                        <a class="btn btn-secondary" href="/login">Log In</a>
+                    <% } else { %>
+                        <a class="btn btn-secondary" href="/logout">Log Out</a>
+                    <% } %>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container form-wrap">
+                <%- include('../partials/flash') %>
+                <section class="page-intro">
+                    <div>
+                        <h1>Create your account</h1>
+                        <p>Join Wonderlust to save favorites, book stays, and host your own place.</p>
+                    </div>
+                    <a class="btn btn-secondary" href="/listings">Back to listings</a>
+                </section>
+
+                <section class="form-panel">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+                            <form action="/signup" method="POST" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input id="username" name="username" type="text" class="form-control" placeholder="Enter username" required>
+                                    <div class="invalid-feedback">Please provide a username.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input id="email" name="email" type="email" class="form-control" placeholder="you@example.com" required>
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input id="password" name="password" type="password" class="form-control" placeholder="Create a password" required>
+                                    <div class="invalid-feedback">Please choose a password.</div>
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </form>
+
+                            <div class="text-center mt-3">
+                                <small>Already have an account? <a href="/login">Log in</a></small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <section>
+                    <h4>Support</h4>
+                    <p>Help Centre</p>
+                    <p>Safety information</p>
+                    <p>Cancellation options</p>
+                </section>
+                <section>
+                    <h4>Hosting</h4>
+                    <p>List your home</p>
+                    <p>Host resources</p>
+                    <p>Community forum</p>
+                </section>
+                <section>
+                    <h4>Wonderlust</h4>
+                    <p>About</p>
+                    <p>Careers</p>
+                    <p>Newsroom</p>
+                </section>
+            </div>
+            <div class="container footer-bottom">© 2026 Wonderlust. Designed for modern stays.</div>
+        </footer>
+    </div>
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        // Simple Bootstrap validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+</html>
+
+

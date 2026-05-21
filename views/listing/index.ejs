@@ -24,13 +24,19 @@
 
                 <div class="nav-actions">
                     <a class="btn btn-primary" href="/listings/new">Create Listing</a>
-                    <button class="icon-btn" type="button" aria-label="Open profile menu">&#9786;</button>
+                    <% if (!currUser) { %>
+                        <a class="btn btn-secondary" href="/signup">Sign Up</a>
+                        <a class="btn btn-secondary" href="/login">Log In</a>
+                    <% } else { %>
+                        <a class="btn btn-secondary" href="/logout">Log Out</a>
+                    <% } %>
                 </div>
             </div>
         </header>
 
         <main class="main">
             <div class="container">
+                <%- include('../partials/flash') %>
                 <section class="page-intro">
                     <div>
                         <h1>Find your next stay</h1>

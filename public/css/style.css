@@ -250,6 +250,35 @@ img {
   font-weight: 600;
 }
 
+.flash {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-1);
+}
+
+.flash p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.flash p + p {
+  margin-top: 6px;
+}
+
+.flash-success {
+  background: #effaf1;
+  border-color: #b8e3bf;
+  color: #14532d;
+}
+
+.flash-error {
+  background: var(--danger-soft);
+  border-color: #f4c7bf;
+  color: var(--danger);
+}
+
 .page-intro p {
   margin: 8px 0 0;
   color: var(--text-secondary);

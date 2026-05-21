@@ -26,12 +26,19 @@
                 <div class="nav-actions">
                     <a class="btn btn-secondary" href="/listings">All Listings</a>
                     <a class="btn btn-primary" href="/listings/new">Create Listing</a>
+                    <% if (!currUser) { %>
+                        <a class="btn btn-secondary" href="/signup">Sign Up</a>
+                        <a class="btn btn-secondary" href="/login">Log In</a>
+                    <% } else { %>
+                        <a class="btn btn-secondary" href="/logout">Log Out</a>
+                    <% } %>
                 </div>
             </div>
         </header>
 
         <main class="main">
             <div class="container">
+                <%- include('../partials/flash') %>
                 <section class="page-intro">
                     <div>
                         <h1><%= listing.title %></h1>
