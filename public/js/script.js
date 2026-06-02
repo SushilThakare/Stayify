@@ -48,3 +48,32 @@
       }, false)
     });
 })();
+
+// Rotating headline logic
+(function () {
+  var phrases = [
+    'Weekend escapes',
+    'Work-from-anywhere homes',
+    'Perfect for family getaways',
+    'City stays with character',
+    'Cozy countryside retreats'
+  ];
+
+  var el = document.getElementById('rotating-headline');
+  if (!el) return;
+
+  var idx = 0;
+  var visible = true;
+
+  function showNext() {
+    el.classList.add('hidden');
+    setTimeout(function () {
+      idx = (idx + 1) % phrases.length;
+      el.textContent = phrases[idx];
+      el.classList.remove('hidden');
+    }, 340);
+  }
+
+  // Rotate every 2800ms
+  setInterval(showNext, 2800);
+})();

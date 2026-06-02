@@ -190,7 +190,7 @@ app.post('/signup', async (req, res, next) => {
     const registeredUser = await User.register(newUser, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);
-      req.flash('success', 'Welcome to Wonderlust! Registration successful.');
+      req.flash('success', 'Welcome to Stayify! Registration successful.');
       res.redirect('/listings');
     });
   } catch (err) {

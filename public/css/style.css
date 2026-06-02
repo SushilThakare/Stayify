@@ -88,65 +88,64 @@ img {
 }
 
 .navbar {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   min-height: 80px;
 }
+
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: clamp(1.45rem, 0.9vw + 1.1rem, 1.95rem);
+  font-weight: 800;
   letter-spacing: 0.01em;
   color: var(--brand-500);
 }
 
 .brand-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: linear-gradient(120deg, var(--brand-grad-1), var(--brand-grad-3));
-}
-
-.search-pill {
-  justify-self: center;
-  width: min(540px, 100%);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 8px 10px 8px 16px;
-  box-shadow: var(--shadow-1);
-}
-
-.search-pill span {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.search-pill .search-action {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 0;
-  color: #ffffff;
-  background: linear-gradient(90deg, var(--brand-grad-1), var(--brand-grad-3));
+  display: none;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
+  margin-left: auto;
   gap: 10px;
+}
+
+/* Brand group and subtle rotating headline */
+.brand-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-sub {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.rotating-text {
+  display: inline-block;
+  min-height: 1em;
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+
+.rotating-text.hidden {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 .btn {
@@ -718,15 +717,8 @@ img {
   }
 
   .navbar {
-    grid-template-columns: 1fr auto;
-    row-gap: 12px;
+    min-height: 72px;
     padding: 12px 0;
-  }
-
-  .search-pill {
-    grid-column: 1 / -1;
-    order: 3;
-    width: 100%;
   }
 
   .listing-grid {
