@@ -200,32 +200,31 @@ All routes are server-rendered and return HTML responses. The application follow
 
 ## 📸 Screenshots
 
-> Replace the placeholders below with actual screenshots of your application.
 
 ### Home / Listings Page
-```
-!<img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 26 20 PM" src="https://github.com/user-attachments/assets/af5ad06c-3eaf-4bf7-9fa0-f0d8cfa3b43e" />
-```
+
+<img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 26 20 PM" src="https://github.com/user-attachments/assets/af5ad06c-3eaf-4bf7-9fa0-f0d8cfa3b43e" />
+
 
 ### Listing Detail Page
-```
+
 <img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 29 21 PM" src="https://github.com/user-attachments/assets/d3a43d5d-dd81-459c-a015-aa02795030b3" />
-```
+
 
 ### Add New Listing Form
-```
+
 <img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 58 17 PM" src="https://github.com/user-attachments/assets/48bfb4f5-e491-4c2d-96e7-12bba059e9ec" />
-```
+
 
 ### Guest Reviews Section
-```
+
 <img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 29 31 PM" src="https://github.com/user-attachments/assets/f8d2e12f-1b82-4cfd-b941-798060f4f5bc" />
-```
+
 
 ### Login & Register Pages
-```
-<img width="1440" height="900" alt="Screenshot 2026-06-01 at 11 26 29 PM" src="https://github.com/user-attachments/assets/170c7313-5449-4865-8f05-fc55bcb8a284" />
-```
+
+<img src="https://github.com/user-attachments/assets/170c7313-5449-4865-8f05-fc55bcb8a284" />
+
 
 ---
 
